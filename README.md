@@ -1,21 +1,37 @@
-# SMB Global Mapping
+# Windows Container Log Monitor Tool
 
-## Persistent storage option for Windows Containers
+Microsoft provides some [troubleshooting guidance for Windows Containers](https://docs.microsoft.com/en-us/virtualization/windowscontainers/troubleshooting).  In that guidance there is reference to a ```LogMonitor.exe``` tool and a link to its [GitHub repo](https://github.com/microsoft/windows-container-tools/tree/master/LogMonitor).  I could not find the compiled executable for download so I compiled it myself (and stashed it here in the repo):
 
-One option for persistent storage for Windows Containers is an SMB share which via 'SMB global mapping' feature became available to (all) containers (on a particular host) with Windows Server 1709:
+1. Downloaded and installed Visual Studio Community Edition (2019)
+1. Chose '.NET desktop development' and 'Desktop development with C++' for Workloads (guesses)
+1. Was not able to compile - turns out I needed build tools that came with VS 2017
+1. Under 'Individual Components' selected Compilers, build tools, and runtimes --> [X] C++/CLI support for v141 build tools.
+![Visual Studio 2017 Build Tools - needed to Compile](./images/vs2017-build-tools.png)
+1. At that point I was able to clone the LogMonitor GitHub repo
+1. Open the project (LogMonitor.sln)
+1. Changed Build --> Configuration Manager --> Active solution configuration --> Release
+1. Build LogMonitor
+![Visual Studio 2017 Build Tools - needed to Compile](./images/log-monitor-build-output.png)
 
-[SMB global mapping feature](https://docs.microsoft.com/en-us/windows-server/storage/file-server/file-server-smb-overview#features-added-in-windows-server-version-1709-and-windows-10-version-1709)
+Alternatively, I was able to compile from the command line as follows:
 
-The 'global' refers to the fact that a share mapped in this way "*is accessible to all users on the local host, including containers.*"  This type of mapping is done with a cmdlet which requires a credential and it is with that credential that all users read/write to the share.
+```& 'C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\Bin\MSBuild.exe' .\LogMonitor.sln /p:platform=x64 /p:configuration=Release```
 
-This article about [SMB Mounts](https://docs.microsoft.com/en-us/virtualization/windowscontainers/manage-containers/persistent-storage#configuration-steps) includes an example using the `New-SmbGlobalMapping`. Note that the cmdlet does not seem to be well documented but that there is a `[-Persistent]` switch which should allow the mapping to survive reboots (though there would be a gotcha I assume on a password change to the account used to make the mapping).  I am not sure if you can use a managed service account for a credential in this case.
+```
+        C:\Tools\LogMonitor.exe /?
 
-## Topic Overview and Deep Dives
+        LogMonitor Tool Version 1.1.0.0
 
-- [Docker Volumes](https://docs.docker.com/storage/volumes/)
-- [Container Storage Support](https://techcommunity.microsoft.com/t5/failover-clustering/container-storage-support-with-cluster-shared-volumes-csv/ba-p/372140)
-- [Failover clustering](https://techcommunity.microsoft.com/t5/failover-clustering/bg-p/FailoverClustering)
+        Usage: LogMonitor.exe [/?] | [--help] | [[/CONFIG <PATH>][COMMAND [PARAMETERS]]]
 
-## Mirantis Related Issues
+        /?|--help   Shows help information
+        <PATH>      Specifies the path of the Json configuration file. This is
+                    an optional parameter. If not specified, then default Json
+                    configuration file path C:\LogMonitor\LogMonitorConfig.json is used
+        COMMAND     Specifies the name of the executable to be run
+        PARAMETERS  Specifies the parameters to be passed to the COMMAND
 
-- [Windows Volume Permissions](https://mirantis.jira.com/browse/FIELD-2329)
+        This tool monitors Event log, ETW providers and log files and write the log entries
+        to the console. The configuration of input log sources is specified in a Json file.
+        file.
+```
