@@ -16,7 +16,7 @@ Alternatively, I was able to compile from the command line as follows:
 
 ```& 'C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\Bin\MSBuild.exe' .\LogMonitor.sln /p:platform=x64 /p:configuration=Release```
 
-## Release
+## Release Info
 ```
         C:\Tools\LogMonitor.exe /?
 
@@ -35,3 +35,6 @@ Alternatively, I was able to compile from the command line as follows:
         to the console. The configuration of input log sources is specified in a Json file.
         file.
 ```
+## Download
+
+```Invoke-WebRequest -Uri https://github.com/rleap-m/windows-container-log-monitor/raw/master/bin/LogMonitor.exe -OutFile LogMonitor.exe```
