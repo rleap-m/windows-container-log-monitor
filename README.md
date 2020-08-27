@@ -37,7 +37,7 @@ Alternatively, I was able to compile from the command line as follows:
 ```
 ## Download
 
-- Utility - ```Invoke-WebRequest -Uri https://github.com/rleap-m/windows-container-log-monitor/raw/master/bin/LogMonitor.exe -OutFile LogMonitor.exe```
+- LogMonitor Utility - ```Invoke-WebRequest -Uri https://github.com/rleap-m/windows-container-log-monitor/raw/master/bin/LogMonitor.exe -OutFile LogMonitor.exe```
 - Sample Config File - ```Invoke-WebRequest -Uri https://github.com/microsoft/windows-container-tools/raw/master/LogMonitor/src/LogMonitor/sample-config-files/IIS/LogMonitorConfig.json -OutFile LogMonitorConfig.json```
 
 
