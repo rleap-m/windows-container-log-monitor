@@ -6,7 +6,7 @@ RUN dir C:\scripts
 COPY bin\ C:\\LogMonitor
 COPY config\ C:\\LogMonitor
 RUN dir C:\LogMonitor
-WORKDIR C:\LogMonitor
+WORKDIR C:\\LogMonitor
 SHELL ["C:\\LogMonitor\\LogMonitor.exe", "powershell.exe"]
 
 # Register the Event Log source that 'Start-LogMonitorDemo.ps1' uses
