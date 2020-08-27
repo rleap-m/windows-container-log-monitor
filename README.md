@@ -38,3 +38,8 @@ Alternatively, I was able to compile from the command line as follows:
 ## Download
 
 ```Invoke-WebRequest -Uri https://github.com/rleap-m/windows-container-log-monitor/raw/master/bin/LogMonitor.exe -OutFile LogMonitor.exe```
+
+## Usage
+
+- [Log Monitor Release Blog](https://techcommunity.microsoft.com/t5/containers/windows-containers-log-monitor-opensource-release/ba-p/973947)
+- [Sample LogMonitorConfig.json](https://github.com/microsoft/windows-container-tools/blob/master/LogMonitor/src/LogMonitor/sample-config-files/IIS/LogMonitorConfig.json)
