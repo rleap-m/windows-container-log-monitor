@@ -53,7 +53,7 @@ log output which is captured by the ```LogMonitor.exe``` tool.
 
 https://hub.docker.com/r/rleapm/windows-container-log-monitor
 
-Notice that the ```docker logs``` command is capturing four different types of output (because of the magic of ```LogMonitor.exe```) in this order (the order in which the script is producing the output)
+Notice that the ```docker logs``` command is capturing four different types of output (because of the magic of ```LogMonitor.exe```) in this order (the order in which the script is producing the output):
 1. Verbose
 1. STDOUT
 1. Log file (simple text log file on disk)
