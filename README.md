@@ -62,7 +62,8 @@ Notice that the ```docker logs``` command is capturing four different types of o
 ```powershell
 PS C:\temp> $id = docker run --rm -d rleapm/windows-container-log-monitor
 PS C:\temp> docker logs -f $id
-
+```
+```
 VERBOSE: This is a sample log message.
 [stdout] This is a sample log message.
 [2020-08-27T22:00:13][3855BD855979] This is a sample log message.
