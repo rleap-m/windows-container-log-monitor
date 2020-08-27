@@ -45,3 +45,31 @@ Alternatively, I was able to compile from the command line as follows:
 
 - [Log Monitor Release Blog](https://techcommunity.microsoft.com/t5/containers/windows-containers-log-monitor-opensource-release/ba-p/973947)
 - [Sample LogMonitorConfig.json](https://github.com/microsoft/windows-container-tools/blob/master/LogMonitor/src/LogMonitor/sample-config-files/IIS/LogMonitorConfig.json)
+
+## Example
+
+A DockerHub repo is available with an image which runs the demo script in this GitHub repo which produces various
+log output which is captured by the ```LogMonitor.exe``` tool.
+
+https://hub.docker.com/r/rleapm/windows-container-log-monitor
+
+Notice that the ```docker logs``` command is capturing four different types of output (because of the magic of ```LogMonitor.exe```) in this order (the order in which the script is producing the output)
+1. Verbose
+1. STDOUT
+1. Log file (simple text log file on disk)
+1. Event Log Application events
+
+```powershell
+PS C:\temp> $id = docker run --rm -d rleapm/windows-container-log-monitor
+PS C:\temp> docker logs -f $id
+
+VERBOSE: This is a sample log message.
+[stdout] This is a sample log message.
+[2020-08-27T22:00:13][3855BD855979] This is a sample log message.
+<Source>EventLog</Source><Time>2020-08-27T22:00:13.000Z</Time><LogEntry><Channel>Application</Channel><Level>Information</Level><EventId>1</EventId><Message>This is a sample log message.</Message></LogEntry>
+VERBOSE: This is a sample log message.
+[stdout] This is a sample log message.
+[2020-08-27T22:00:18][3855BD855979] This is a sample log message.
+<Source>EventLog</Source><Time>2020-08-27T22:00:18.000Z</Time><LogEntry><Channel>Application</Channel><Level>Information</Level><EventId>1</EventId><Message>This is a sample log message.</Message></LogEntry>
+...
+```
