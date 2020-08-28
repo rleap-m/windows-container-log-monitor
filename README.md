@@ -1,6 +1,6 @@
 # Windows Container Log Monitor Tool
 
-Microsoft provides some [troubleshooting guidance for Windows Containers](https://docs.microsoft.com/en-us/virtualization/windowscontainers/troubleshooting).  In that guidance there is reference to a ```LogMonitor.exe``` tool and a link to its [GitHub repo](https://github.com/microsoft/windows-container-tools/tree/master/LogMonitor).  I could not find the compiled executable for download so I compiled it myself (and stashed it here in the repo):
+Microsoft provides some [troubleshooting guidance for Windows Containers](https://docs.microsoft.com/en-us/virtualization/windowscontainers/troubleshooting).  In that guidance there is reference to a ```LogMonitor.exe``` tool and a link to its [GitHub repo](https://github.com/microsoft/windows-container-tools/tree/master/LogMonitor).  I could not find the executable for download so I compiled it myself (and stashed it here in the repo).  I have also included a link below to a sample Docker image which runs a script which outputs to various sources, all collected and redirect to STDOUT by the ```LogMonitor.exe``` utility.
 
 ## Build
 1. Cloned the LogMonitor [GitHub repo](https://github.com/microsoft/windows-container-tools/tree/master/LogMonitor)
