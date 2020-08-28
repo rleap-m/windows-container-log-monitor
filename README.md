@@ -68,6 +68,7 @@ VERBOSE: This is a sample log message.
 [stdout] This is a sample log message.
 [2020-08-27T22:00:13][3855BD855979] This is a sample log message.
 <Source>EventLog</Source><Time>2020-08-27T22:00:13.000Z</Time><LogEntry><Channel>Application</Channel><Level>Information</Level><EventId>1</EventId><Message>This is a sample log message.</Message></LogEntry>
+
 VERBOSE: This is a sample log message.
 [stdout] This is a sample log message.
 [2020-08-27T22:00:18][3855BD855979] This is a sample log message.
