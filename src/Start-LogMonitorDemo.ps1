@@ -18,5 +18,6 @@ do {
     Write-Host "[stdout] $Message"
     Add-Content -Value "[$(Get-Date -Format s)][$env:COMPUTERNAME] $Message" -Path $LogPath
     Write-EventLog -LogName 'Application' -Source $EventLogSource -EntryType Information -EventId 1 -Message $Message
+    Write-Host
     Start-Sleep -Seconds 5
 } while ($true)
